@@ -1,0 +1,17 @@
+CREATE TABLE `user_account` (
+	`id` BIGSERIAL NOT NULL,
+	`username` VARCHAR(50) NOT NULL,
+	`password` VARCHAR(50) NOT NULL,
+	`workspace_email` VARCHAR(50) NOT NULL,
+	`first_name` VARCHAR(15) NOT NULL,
+	`last_name` VARCHAR(15) NOT NULL DEFAULT '',
+	`owner` BOOLEAN NOT NULL,
+	`registration_time` TIMESTAMP NOT NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+	`create_date` DATE NOT NULL DEFAULT NULL,
+	`is_active` BOOLEAN NOT NULL,
+	`organisation_id` BIGINT NOT NULL,
+	`access_type_id` BIGINT NOT NULL,
+	CONSTRAINT user_account_ak_1 UNIQUE (username) NOT DEFERRABLE  INITIALLY IMMEDIATE,
+    CONSTRAINT user_account_ak_2 UNIQUE (email) NOT DEFERRABLE  INITIALLY IMMEDIATE,
+	PRIMARY KEY (`id`)
+);
